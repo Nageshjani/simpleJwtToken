@@ -143,12 +143,12 @@ http http://127.0.0.1:4000/secret/ "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbG
 ```
 
 ## Importan
+![Screenshot (574)](https://user-images.githubusercontent.com/34247973/228338186-2c07e510-66d0-4731-83f7-40445d7ab6bd.jpg)
 
 ```bash
 'Call this above url after access toekn expires'
 'You will  get Error : 401'
 ```
-![Screenshot (574)](https://user-images.githubusercontent.com/34247973/228338186-2c07e510-66d0-4731-83f7-40445d7ab6bd.jpg)
 
 ![Screenshot (571)](https://user-images.githubusercontent.com/34247973/228337846-941a35b9-9078-48d1-80cf-daaf374ce6dd.png)
 ![Screenshot (574)](https://user-images.githubusercontent.com/34247973/228337890-53e78b3b-3ade-44ec-9aba-810226b80310.png)
