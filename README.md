@@ -121,8 +121,9 @@ python manage.py runserver
 ```bash
 http post http://127.0.0.1:8000/api/token/ username=spider password=vinayak
 ```
-Screenshot (569).png
-Screenshot (570).png
+![Screenshot (569)](https://user-images.githubusercontent.com/34247973/228337737-3668f6de-9469-4828-ba70-7c86f2089aaa.png)
+![Screenshot (570)](https://user-images.githubusercontent.com/34247973/228337773-192d65c0-1444-4bef-9654-7021efb2c70b.png)
+
 
 
 ```python
@@ -147,9 +148,11 @@ http http://127.0.0.1:4000/secret/ "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbG
 'Call this above url after access toekn expires'
 'You will  get Error : 401'
 ```
-Screenshot (571).png
+![Screenshot (574)](https://user-images.githubusercontent.com/34247973/228338186-2c07e510-66d0-4731-83f7-40445d7ab6bd.jpg)
 
-Screenshot (574).png
+![Screenshot (571)](https://user-images.githubusercontent.com/34247973/228337846-941a35b9-9078-48d1-80cf-daaf374ce6dd.png)
+![Screenshot (574)](https://user-images.githubusercontent.com/34247973/228337890-53e78b3b-3ade-44ec-9aba-810226b80310.png)
+
 
 
 ## solution
@@ -159,7 +162,9 @@ Screenshot (574).png
 'Now call'
 ```
 
-screenshot 575 png
+
+![Screenshot (575)](https://user-images.githubusercontent.com/34247973/228337973-4aeda928-7a39-4b8a-97e8-ab72149c7998.png)
+
 ```bash
 http POST http://localhost:8000/api/token/refresh/ refresh=abc123
 ```
@@ -175,8 +180,10 @@ just copy both and store in localstorage
 
 now again call secret api using new access token , this time no error'
 ```
-screenshot 576
-screesnhot 577
+
+![Screenshot (576)](https://user-images.githubusercontent.com/34247973/228338014-01f1a3f5-71a3-4e8e-8b81-4885f2fd0bc4.png)
+![Screenshot (577)](https://user-images.githubusercontent.com/34247973/228338063-b43b929d-d6dd-4c89-bd76-3d6d1b806198.png)
+
 
 
 
