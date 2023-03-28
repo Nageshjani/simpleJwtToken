@@ -1,0 +1,141 @@
+pip install djangorestframework_simplejwt
+django-admin startproject config
+cd config
+python manage.py runserver
+ctr c
+python manage.py startapp app
+
+pip install djangorestframework
+pip install djangorestframework-jwt
+
+
+
+INSTALLED_APPS = [
+    # ...
+    'rest_framework',
+    'rest_framework_jwt',
+    # ...
+]
+
+
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework_jwt.authentication.JSONWebTokenAuthentication',
+        'rest_framework.authentication.SessionAuthentication',
+        'rest_framework.authentication.BasicAuthentication',
+    ],
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.IsAuthenticated',
+    ],
+}
+
+
+JWT_AUTH = {
+    'JWT_SECRET_KEY': 'your-secret-key',
+    'JWT_ALGORITHM': 'HS256',
+    'JWT_ALLOW_REFRESH': True,
+    'JWT_EXPIRATION_DELTA': datetime.timedelta(minutes=15),
+    'JWT_REFRESH_EXPIRATION_DELTA': datetime.timedelta(days=7),
+}
+
+
+
+
+
+
+
+
+from django.urls import path, include
+from rest_framework_simplejwt import views as jwt_views
+from django.urls import path
+from . import views
+  
+  
+urlpatterns = [
+    path('api/token/',
+         jwt_views.TokenObtainPairView.as_view(),
+         name ='token_obtain_pair'),
+    path('api/token/refresh/',
+         jwt_views.TokenRefreshView.as_view(),
+         name ='token_refresh'),
+    path('', include('app.urls')),
+     path('hello/', views.HelloView.as_view(), name ='hello'),
+]
+  
+
+
+
+
+
+
+
+
+from rest_framework.views import APIView
+from rest_framework.response import Response
+from rest_framework.permissions import IsAuthenticated
+  
+  
+class HelloView(APIView):
+    permission_classes = (IsAuthenticated, )
+  
+    def get(self, request):
+        content = {'message': 'Hello, GeeksforGeeks'}
+        return Response(content)
+        
+        
+        
+        
+        
+  
+
+
+sudo apt install httpie
+
+
+python3 manage.py migrate
+
+
+python manage.py createsuperuser
+
+
+python manage.py runserver 4000
+
+
+http post http://127.0.0.1:4000/api/token/ username=spider password=vinayak
+
+'This will give both access token as well as refresh toke '
+
+
+copy access token
+
+
+http http://127.0.0.1:4000/hello/ "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNTg3Mjc5NDIxLCJqdGkiOiIzYWMwNDgzOTY3NjE0ZDgxYmFjMjBiMTBjMDlkMmYwOCIsInVzZXJfaWQiOjF9.qtNrUpyPQI8W2K2T22NhcgVZGFTyLN1UL7uqJ0KnF0Y"
+
+
+
+
+http POST http://localhost:8000/api/token/refresh/ refresh=abc123
+
+
+call this url aftrr access token expired
+agin you will 
+get 
+{
+  "access": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...",
+  "refresh": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9..."
+}
+
+just copy both and store in localstorage
+
+now again ca hello api using nee accescide
+
+
+http post http://127.0.0.1:8000/api/token/ username=nagesh4 password=jani123
+
+http http://127.0.0.1:8000/secret/ "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjgwMDI2MzM0LCJqdGkiOiJjNzk4YmU5OTRlOGI0MjIwYjcxZjE4ZjEwZmZjZGI5MCIsInVzZXJfaWQiOjF9.KuHf2VcsUEoU4uqDwYRNJRKG8MfyrK6PyLnwrmL25BA"
+
+
+eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjgwMDI3MDQ4LCJqdGkiOiJlYmU4OWI4Y2I0NzY0OGEzOWM1MTJlMjhlNDcwMmJhMiIsInVzZXJfaWQiOjF9.s-YcAy_xV4be-OoHH_Vsa5lrRHCtx4ScJwinzTj4PYM
+http http://127.0.0.1:8000/secret/ "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjgwMDI2NjA3LCJqdGkiOiI1NDZlM2I5ZDA0Nzg0Y2U1OTQ2NzQ5OWU1ZjAyYjc5OSIsInVzZXJfaWQiOjF9.lehUlM2sLaRlMm570nLDliyO4iQNQnCLtk1neIK4urI"
+http http://127.0.0.1:8000/secret/ "Authorization: Bearer
+http http://127.0.0.1:8000/secret/ "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjgwMDI3MDQ4LCJqdGkiOiJlYmU4OWI4Y2I0NzY0OGEzOWM1MTJlMjhlNDcwMmJhMiIsInVzZXJfaWQiOjF9.s-YcAy_xV4be-OoHH_Vsa5lrRHCtx4ScJwinzTj4PYM"
